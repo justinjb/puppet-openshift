@@ -1,0 +1,27 @@
+topicprefix = /topic/
+main_collective = <%= @openshift_activemq_topic %>
+collectives = <%= @openshift_activemq_topic %>
+libdir = /opt/rh/ruby193/root/usr/libexec/mcollective/
+logfile = /var/log/openshift/ruby193-mcollective.log
+loglevel = debug
+registerinterval = 30
+daemonize = 1
+direct_addressing = 1
+
+# Plugins
+securityprovider = psk
+plugin.psk = unset
+
+<% @openshift_activemq_host.split(",").each do | activemq_host | %>
+
+connector = stomp
+plugin.stomp.host = <%= activemq_host %>
+plugin.stomp.port = <%= @openshift_activemq_port %>
+plugin.stomp.user = <%= @openshift_activemq_user %>
+plugin.stomp.password = <%= @openshift_activemq_pass %>
+<% end %>
+
+# Facts
+factsource = yaml
+plugin.yaml = /opt/rh/ruby193/root/etc/mcollective/facts.yaml
+
