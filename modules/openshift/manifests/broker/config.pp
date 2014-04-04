@@ -1,5 +1,31 @@
-class openshift::broker::config {
+class openshift::broker::config ( 
 
+        $openshift_cloud_domain                 = hiera('openshift_data::cloud_domain'),
+        $openshift_mongo_host                   = hiera('openshift_data::mongo_host'),
+        $openshift_mongo_port                   = hiera('openshift_data::mongo_port'),
+        $openshift_mongo_user                   = hiera('openshift_data::mongo_user'),
+        $openshift_mongo_password               = hiera('openshift_data::mongo_password'),
+        $openshift_mongo_db                     = hiera('openshift_data::mongo_db'),
+        $openshift_env_name                     = hiera('openshift_data::openshift_env_name'),
+        $openshift_bind_server                  = hiera('openshift_data::bind_server'),
+        $openshift_bind_port                    = hiera('openshift_data::bind_port'),
+        $openshift_bind_zone                    = hiera('openshift_data::bind_zone'),
+        $openshift_bind_keyname                 = hiera('openshift_data::bind_keyname'),
+        $openshift_bind_keyvalue                = hiera('openshift_data::bind_keyvalue'),
+        $openshift_session_secret               = hiera('openshift_data::session_secret'),
+        $openshift_auth_salt                    = hiera('openshift_data::auth_salt'),
+        $openshift_activemq_host                = hiera('openshift_data::activemq_host'),
+        $openshift_activemq_user                = hiera('openshift_data::activemq_user'),
+        $openshift_activemq_pass                = hiera('openshift_data::activemq_pass'),
+        $openshift_districts_max_capacity       = hiera('openshift_data::districts_max_capacity'),
+        $openshift_districts_first_uid          = hiera('openshift_data::districts_first_uid'),
+        $openshift_mcollectimve_timeout         = hiera('openshift_data::mcollective_timeout'),
+
+
+
+	){
+
+	notice("###### districts_first_uid is:  $openshift_districts_first_uid")
 
 	Class["::ruby193_mcollective::client::install"] -> Class["openshift::broker::config"]
 	Class["::openshift::broker::install"] -> Class["openshift::broker::config"]
@@ -10,30 +36,6 @@ class openshift::broker::config {
 	include "::httpd"
 	include "::openshift::broker::selinux"	
 	include "::selinux"
-
-	$openshift_data				= hiera('openshift_data')
-	$openshift_cloud_domain			= $openshift_data['cloud_domain']
-	$openshift_mongo_host			= $openshift_data['mongo_host']
-	$openshift_mongo_port			= $openshift_data['mongo_port']
-	$openshift_mongo_user			= $openshift_data['mongo_user']
-	$openshift_mongo_password		= $openshift_data['mongo_password']
-	$openshift_mongo_db			= $openshift_data['mongo_db']
-	$openshift_env_name			= $openshift_data['openshift_env_name']
-	$openshift_bind_server			= $openshift_data['bind_server']
-	$openshift_bind_port			= $openshift_data['bind_port']
-	$openshift_bind_zone			= $openshift_data['bind_zone']
-	$openshift_bind_keyname			= $openshift_data['bind_keyname']
-	$openshift_bind_keyvalue		= $openshift_data['bind_keyvalue']
-	$openshift_session_secret		= $openshift_data['session_secret']
-	$openshift_auth_salt			= $openshift_data['auth_salt']
-	$openshift_activemq_host		= $openshift_data['activemq_host']
-	$openshift_activemq_user		= $openshift_data['activemq_user']
-	$openshift_activemq_pass		= $openshift_data['activemq_pass']
-	$openshift_districts_max_capacity	= $openshift_data['districts_max_capacity']
-	$openshift_districts_first_uid		= $openshift_data['districts_first_uid']
-	$openshift_mcollectimve_timeout		= $openshift_data['mcollectimve_timeout']
-	
-
 
 	File {
 		notify				=> Class["openshift::broker::service"],

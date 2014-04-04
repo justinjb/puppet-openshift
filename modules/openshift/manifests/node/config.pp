@@ -12,11 +12,10 @@ class openshift::node::config {
 
 
 
-        $openshift_data                         = hiera('openshift_data')
-        $openshift_cloud_domain                 = $openshift_data['cloud_domain']
-        $openshift_gear_min_uid                 = $openshift_data['gear_min_uid']
-        $openshift_gear_max_uid                 = $openshift_data['gear_max_uid']
-        $openshift_broker_host                  = $openshift_data['broker_host']
+        $openshift_cloud_domain                 = hiera('openshift_data::cloud_domain')
+        $openshift_gear_min_uid                 = hiera('openshift_data::gear_min_uid')
+        $openshift_gear_max_uid                 = hiera('openshift_data::gear_max_uid')
+        $openshift_broker_host                  = hiera('openshift_data::broker_host')
 
 
 

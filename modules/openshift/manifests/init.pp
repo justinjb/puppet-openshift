@@ -36,24 +36,22 @@ class openshift::console {
 
 }
 
+class openshift::bsn (
 
+        $openshift_activemq_user                = hiera('openshift_data::activemq_user'),
+        $openshift_activemq_pass                = hiera('openshift_data::activemq_pass'),
+        $openshift_activemq_topic               = hiera('openshift_data::activemq_topic'),
 
-class openshift::bsn {
+	){
 
 	include "::openshift::bsn::config"
 	include "::openshift::bsn::service"
 	include "::openshift::bsn::install"
 	include "::ntp"
 
-        $openshift_data                         = hiera('openshift_data')
-	$openshift_activemq_user		= $openshift_data['activemq_user']
-	$openshift_activemq_pass		= $openshift_data['activemq_pass']
-	$openshift_activemq_topic		= $openshift_data['activemq_topic']
-
 	# Use puppetlabs' provided activemq module
         class { 'activemq':
 		users => [ [ $openshift_activemq_user, $openshift_activemq_pass, $openshift_activemq_topic ] ],
-#                users   => [ [ 'mcollective', 'marionette', 'foo1topic' ] ],
                 activemq_peers => [ [ 'peer1', 'peer1user', 'peer1pass' ] ]
         }
 

@@ -1,33 +1,30 @@
 ---
-openshift_data:
-        cloud_domain: openshift06.home.lab.dtrainor.local
-#        mongo_host: bsn01.openshift06.home.lab.dtrainor.local,bsn02.openshift06.home.lab.dtrainor.local,bsn03.openshift06.home.lab.dtrainor.local
-        mongo_host: bsn01.openshift06.home.lab.dtrainor.local
-#        activemq_host: bsn01.openshift06.home.lab.dtrainor.local,bsn02.openshift06.home.lab.dtrainor.local,bsn03.openshift06.home.lab.dtrainor.local
-        activemq_host: bsn01.openshift06.home.lab.dtrainor.local
-        mongo_port: 27017
-        activemq_port: 61613
-        mongo_user: openshift_broker_production
-        mongo_password: openshift_broker_production
-        mongo_db: openshift_broker_production
-        activemq_user: mcollective
-        activemq_pass: marionette
-        activemq_topic: openshift_broker_production
-        openshift_env_name: openshift06
-        bind_server: 10.16.0.200
-        bind_port: 53
-        bind_zone: openshift06.home.lab.dtrainor.local
-        bind_keyname: openshift05.home.lab.dtrainor.local
-        bind_keyvalue: "kQxSWIRIZ0tiBy26Aw=="
-        session_secret: "AUTH_SALT=ftJYMpkntDFIrlRznAYDY91CgH7UrJZrj3b4pfxdl7CB5Hanj8Q9MbYTz8Gng9O+"
-        auth_salt: "AUTH_SALT=ftJYMpkntDFIrlRznAYDY91CgH7UrJZrj3b4pfxdl7CB5Hanj8Q9MbYTz8Gng9O+"
-        broker_host: broker01.openshift06.home.lab.dtrainor.local
-        gear_min_uid: 15000
-        gear_max_uid: 16999
-        districts_max_capacity: 2000
-        districts_first_uid: 15000
-        mcollective_timeout: 360
-
+openshift_data::cloud_domain: openshift06.home.lab.dtrainor.local
+openshift_data::mongo_host: bsn01.openshift06.home.lab.dtrainor.local
+openshift_data::activemq_host: bsn01.openshift06.home.lab.dtrainor.local
+openshift_data::mongo_port: 27017
+openshift_data::activemq_port: 61613
+openshift_data::mongo_user: openshift_broker_production
+openshift_data::mongo_password: openshift_broker_production
+openshift_data::mongo_db: openshift_broker_production
+openshift_data::activemq_user: mcollective
+openshift_data::activemq_pass: marionette
+openshift_data::activemq_topic: openshift_broker_production
+openshift_data::openshift_env_name: openshift06
+openshift_data::bind_server: 10.16.0.200
+openshift_data::bind_port: 53
+openshift_data::bind_zone: openshift06.home.lab.dtrainor.local
+openshift_data::bind_keyname: openshift05.home.lab.dtrainor.local
+openshift_data::bind_keyvalue: "kQxSWIRIZ0tiBy26Aw=="
+openshift_data::session_secret: "AUTH_SALT=ftJYMpkntDFIrlRznAYDY91CgH7UrJZrj3b4pfxdl7CB5Hanj8Q9MbYTz8Gng9O+"
+openshift_data::auth_salt: "AUTH_SALT=ftJYMpkntDFIrlRznAYDY91CgH7UrJZrj3b4pfxdl7CB5Hanj8Q9MbYTz8Gng9O+"
+openshift_data::broker_host: broker01.openshift06.home.lab.dtrainor.local
+openshift_data::gear_min_uid: 15000
+openshift_data::gear_max_uid: 16999
+openshift_data::districts_max_capacity: 2000
+openshift_data::districts_first_uid: 15000
+openshift_data::mcollective_timeout: 360
+openshift_data::activemq_peers: bsn01.openshift06.home.lab.dtrainor.local
 
 
 dantest:
